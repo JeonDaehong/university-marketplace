@@ -1,7 +1,7 @@
-package com.project.universitymarketplace.product.controller;
+package com.project.universitymarketplace.domain.product.controller;
 
-import com.project.universitymarketplace.product.entity.Product;
-import com.project.universitymarketplace.product.service.ProductService;
+import com.project.universitymarketplace.domain.product.model.entity.Product;
+import com.project.universitymarketplace.domain.product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
