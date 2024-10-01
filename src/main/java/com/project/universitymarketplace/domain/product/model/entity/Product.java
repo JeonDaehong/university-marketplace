@@ -1,4 +1,4 @@
-package com.project.universitymarketplace.product.entity;
+package com.project.universitymarketplace.domain.product.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

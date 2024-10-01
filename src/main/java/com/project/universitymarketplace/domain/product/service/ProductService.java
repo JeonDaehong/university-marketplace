@@ -1,8 +1,8 @@
-package com.project.universitymarketplace.product.service;
+package com.project.universitymarketplace.domain.product.service;
 
-import com.project.universitymarketplace.product.entity.Product;
-import com.project.universitymarketplace.product.exception.ProductNotFoundException;
-import com.project.universitymarketplace.product.repository.ProductRepository;
+import com.project.universitymarketplace.domain.product.model.entity.Product;
+import com.project.universitymarketplace.common.exception.ProductNotFoundException;
+import com.project.universitymarketplace.domain.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
