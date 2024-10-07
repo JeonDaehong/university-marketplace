@@ -40,4 +40,40 @@ public class User extends CommonDateEntity {
     @Column(name = "USER_ROLE")
     @Enumerated(value = EnumType.STRING)
     private LoginCheck.Role userRole;
+
+    @Column(name = "EMAIL", unique = true) // 중복을 허용하지 않도록 설정
+    private String email;
+
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @Column(name = "NICKNAME")
+    private String nickname;
+
+    @Column(name = "POINT")
+    private Long point;
+
+    @Column(name = "STATUS")
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
+
+    @Getter
+    @RequiredArgsConstructor
+    public enum Status {
+        DEFAULT("정상"),
+        STOPPED("정지"),
+        DELETED("삭제");
+
+        private final String description;
+    }
+
+    @Builder
+    public User(LoginCheck.Role userRole, String email, String password, String nickname) {
+        this.userRole = userRole;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.point = 0L;
+        this.status = Status.DEFAULT;
+    }
 }
