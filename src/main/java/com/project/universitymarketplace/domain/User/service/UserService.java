@@ -24,7 +24,7 @@ public class UserService {
      * 트랜잭션 ID를 부여하지 않으므로 오버헤드가 일어나지 않아 성능상 이점이 생기기 때문입니다.
      */
     @Transactional(readOnly = true)
-    public void existsByEmail(String requestEmail) {
+    public void existsByEmail(String email) {
     }
 
 }
