@@ -1,12 +1,18 @@
 package com.project.universitymarketplace.domain.User.service;
 
+import com.project.universitymarketplace.common.exception.ApiException;
+import com.project.universitymarketplace.common.exception.ExceptionEnum;
+import com.project.universitymarketplace.domain.User.model.UserJoinRequest;
+import com.project.universitymarketplace.domain.User.model.entity.User;
 import com.project.universitymarketplace.domain.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class UserService {
 
@@ -14,7 +20,9 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public void join( ) {
+    public void join(UserJoinRequest userJoinRequest) {
+        User user = UserJoinRequest.toEntity(userJoinRequest, passwordEncoder);
+        userRepository.save(user);
     }
 
     /**
@@ -25,6 +33,7 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     public void existsByEmail(String email) {
+        if ( userRepository.existsByEmail(email) ) throw new ApiException(ExceptionEnum.DUPLICATED_EMAIL, email);
     }
 
 }
